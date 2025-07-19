@@ -1,0 +1,24 @@
+project:
+  type: book
+
+book:
+  title: "Mathematical Derivations for the Probaverse Project"
+  author: "Vincenzo Coia"
+  date: "July 19, 2025"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - inverse_distribution.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      - journal
+  pdf:
+    documentclass: scrreprt
+
+#editor: visual
+

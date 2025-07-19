@@ -1,0 +1,42 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mathematical Derivations for the Probaverse Project",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "inverse_distribution.html",
+    "href": "inverse_distribution.html",
+    "title": "2  Inverse Distribution",
+    "section": "",
+    "text": "If \\(X\\) is a random variable with distribution function \\(F(x)\\), then the inverse distribution is defined by the random variable \\(Y = 1 / X\\). This distribution is defined whenever \\(P(X = 0) = 0\\).\nThe CDF \\(F_Y(y)\\) can be derived under two cases: either \\(y&lt;0\\) or \\(y&gt;0\\).\nFor \\(y&lt;0\\), \\[\n\\begin{align}\nP\\left(\\frac{1}{X} \\leq y\\right) &= P\\left(X \\geq \\frac{1}{y} \\cap X\\leq0\\right) \\\\\n&= F(0) - F\\left(\\frac{1}{y}\\right) + P\\left(X = \\frac{1}{y}\\right)\n\\end{align}\n\\]\nFor \\(y&gt;0\\): \\[\n\\begin{align}\nP\\left(\\frac{1}{X} \\leq y\\right) &= P\\left(X \\geq \\frac{1}{y} \\cup X\\leq0\\right) \\\\\n&= 1 - P\\left(X &lt; \\frac{1}{y} \\cap X&gt;0\\right) \\\\\n&= 1 + F(0) - F\\left(\\frac{1}{y}\\right) + P\\left(X = \\frac{1}{y}\\right)\n\\end{align}\n\\]\nPutting the two together, \\[F_Y(y) = I(y \\geq 0) + F(0) - F\\left(\\frac{1}{y}\\right) + P\\left(X = \\frac{1}{y}\\right),\\] where \\(I\\) is the indicator evaluating to 1 if its argument is true, and 0 otherwise. For \\(y = 0\\), the function evaluates to \\(F(0)\\) in the limit from both sides – the same y-intercept as the original distribution’s CDF. For evaluation in R, since \\(1/0\\) evaluates to Inf as opposed to -Inf, it is convenient to include \\(y = 0\\) in the indicator function to ensure proper evaluation at 0.\nFor the special case of continuous distributions having \\(X&gt;0\\) almost surely, or \\(X&lt;0\\) almost surely, the CDF reduces in both cases to \\[F_Y(y) = 1 - F\\left(\\frac{1}{y}\\right).\\]\nTo arrive at the quantile function, note that the term \\(P(X = 1/y)\\) has the effect of switching \\(F\\) from being right-continuous to left-continuous, and has no effect on the definition of quantile used in the probaverse that \\(Q_Y(p) = \\inf\\{y \\in \\mathbb{R}: F_Y(y) \\leq p\\}\\). But for transparency, write \\(F^{\\ell}(x) = F(x) - P(X = x)\\) for \\(x\\in\\mathbb{R}\\), the left-continuous CDF, to simplify the CDF to \\[F_Y(y) = I(y &gt; 0) + F(0) - F^{\\ell}\\left(\\frac{1}{y}\\right).\\] To further simplify, the quantile function \\(Q_Y(p)\\) can be derived for \\(p\\in[0, F(0))\\) separately from \\(p\\in(F(0), 1]\\), because they correspond to \\(y &lt; 0\\) and \\(y &gt; 0\\), respectively, so that the indicator function is constant in both cases. Doing so gives the final quantile function, \\[Q_Y(p) = \\frac{1}{Q\\left(F(0) + I(p &gt; F(0)) -p\\right)},\\] for \\(p \\in [0, 1] \\backslash \\{F(0)\\}\\). For \\(p = F(0)\\),\nwhere \\(x_{\\ell}\\) is the left endpoint of the distribution \\(F\\) (the infimum of the support of \\(F\\)). In R, the above formula evaluates properly if the convention \\(Q(0) = x_{\\ell}\\) is adopted as opposed to having \\(Q(0)\\) strictly evaluate to \\(-\\infty\\), which is the case for the default stats package.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Inverse Distribution</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
